@@ -10,9 +10,11 @@
       <form id="formUpdateProduct" ng-submit="submitForm()">
       @csrf
       <div class="modal-body row">
+        <span class="text-danger">@{{error.message}}</span>
         <div class="col-md-6 mb-2">
             <label for="">Nombre</label>
             <input type="text" name="nombre" ng-model="product.nombre" class="form-control">
+            <span class="text-danger text-sm">@{{error.errors.nombre}}</span>
         </div>
         <div class="col-md-6 mb-2">
             <label for="">SKU</label>
@@ -21,10 +23,12 @@
         <div class="col-md-6 mb-2">
             <label for="">Cantidad</label>
             <input type="number" name="cantidad" ng-model="product.cantidad" class="form-control">
+            <span class="text-danger text-sm">@{{error.errors.cantidad}}</span>
         </div>
         <div class="col-md-6 mb-2">
             <label for="">Precio</label>
             <input type="text" step="any" name="precio" ng-model="product.precio" class="form-control">
+            <span class="text-danger text-sm">@{{error.errors.precio}}</span>
         </div>
 
         <div class="col-md-12 mb-2">

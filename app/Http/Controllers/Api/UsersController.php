@@ -32,7 +32,7 @@ class UsersController extends Controller
                     'name' => 'required',
                     'email' => 'required|email|unique:users,email',
                     'username' => 'required|unique:users,username',
-                    'telefono' => 'numeric',
+                    'telefono' => 'integer',
                     'fecha_nacimiento' => 'date_format:Y-m-d',
                     'password' => 'required'
                 ]);
@@ -67,5 +67,12 @@ class UsersController extends Controller
         $user->delete();
 
         return response()->json('eliminado');
+    }
+
+    public function show($id){
+        
+        $user = User::findOrFail($id);
+       
+        return response()->json($user);
     }
 }

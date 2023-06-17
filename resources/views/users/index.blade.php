@@ -10,6 +10,7 @@
         <div class="col-md-12">
         <div class="d-flex">   
             <h4 class="text-center mb-4">Usuarios</h4>
+            
             <a type="button" class="btn btn-sm btn-primary position-absolute end-0 mr-3 text-white" ng-click="showUser(null)" data-bs-toggle="modal" data-bs-target="#modalNewUser">Crear usuario</a>
             </div>
             <div class="card pl-2 pr-2 pb-2">
@@ -43,6 +44,10 @@
         $scope.currentPage = 1;
         $scope.users = [];
         $scope.user = {};
+        $scope.error = '';
+        $scope.apiToken = {!! json_encode($token) !!};
+
+        $http.defaults.headers.common['Authorization'] = 'Bearer ' + $scope.apiToken;
 
         //get users request
         $scope.getData = function(){
@@ -88,9 +93,10 @@
                 $('#modalNewUser').modal('hide');
                 bsAlert.show();
                 $scope.getData();
+                $scope.error = '';
             })
             .catch(function(error) {
-                // Error callback
+                $scope.error = error.data;
                 console.error('Error submitting form:', error);
             });
         };

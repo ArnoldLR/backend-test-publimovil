@@ -11,7 +11,7 @@
         <div class="d-flex justify-content-between">   
             <h4 class="text-center mb-4">Productos</h4>
             <input type="text" ng-model="searchText" ng-change="search()" class="form-control w-50" placeholder="Buscar productos">
-            <a type="button" class="btn btn-sm btn-primary h-50 mr-3 text-white" ng-click="showUser(null)" data-bs-toggle="modal" data-bs-target="#modalNewProduct">Crear producto</a>
+            <a type="button" class="btn btn-sm btn-primary h-50 mr-3 text-white" ng-click="showProduct(null)" data-bs-toggle="modal" data-bs-target="#modalNewProduct">Crear producto</a>
         </div>
             <div class="card pl-2 pr-2 pb-2">
                 @include('products.products') 
@@ -45,6 +45,10 @@
         $scope.products = [];
         $scope.user = {};
         $scope.searchText = '';
+        $scope.error = '';
+        $scope.apiToken = {!! json_encode($token) !!};
+
+        $http.defaults.headers.common['Authorization'] = 'Bearer ' + $scope.apiToken;
 
         //get products request
         $scope.getData = function(){
@@ -90,9 +94,10 @@
                 $('#modalNewProduct').modal('hide');
                 bsAlert.show();
                 $scope.getData();
+                $scope.error = '';
             })
             .catch(function(error) {
-                // Error callback
+                $scope.error = error.data;
                 console.error('Error submitting form:', error);
             });
         };
@@ -103,6 +108,7 @@
             .then(function(response) {
                 bsAlert.show();
                 $scope.getData();
+                $scope.error = '';
             })
             .catch(function(error) {
                 console.error('Error:', error);
@@ -111,17 +117,20 @@
 
         //search products
         $scope.search = function(){
-            
-            $http.get('/api/search-products/' + $scope.searchText)
-            .then(function(response) {
-                $scope.data = response.data;
-                $scope.totalPages = Math.ceil($scope.data.length / $scope.itemsPerPage);
-                $scope.updateData(); 
-            })
-            .catch(function(error) {
-                console.error('Error:', error);
-            });
-            
+            if($scope.searchText.length > 0){
+                $http.get('/api/search-products/' + $scope.searchText)
+                .then(function(response) {
+                    $scope.data = response.data;
+                    $scope.totalPages = Math.ceil($scope.data.length / $scope.itemsPerPage);
+                    $scope.updateData(); 
+                })
+                .catch(function(error) {
+                    console.error('Error:', error);
+                });
+            }else{
+                $scope.getData(); 
+            }
+             
         }
         
     });

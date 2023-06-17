@@ -25,20 +25,25 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('/auth/login', 'login');
 });
 
-Route::controller(UsersController::class)->group(function(){
-    Route::get('/users', 'users');
-    Route::get('/user/delete/{id}', 'delete');
-    Route::post('/create-user', 'user');
-    Route::post('/update-user', 'user');
-});
+Route::middleware(['auth:sanctum'])->group(function() {
 
-Route::controller(ProductsController::class)->group(function(){
-    Route::get('/products', 'products');
-    Route::get('/product/{id}', 'show');
-    Route::get('/product/delete/{id}', 'delete');
-    Route::post('/create-product', 'product');
-    Route::post('/update-product', 'product');
-    Route::get('/search-products/{text}', 'search');
+    Route::controller(UsersController::class)->group(function(){
+        Route::get('/users', 'users');
+        Route::get('/user/delete/{id}', 'delete');
+        Route::get('/user/{id}', 'show');
+        Route::post('/create-user', 'user');
+        Route::post('/update-user', 'user');
+    });
+
+    Route::controller(ProductsController::class)->group(function(){
+        Route::get('/products', 'products');
+        Route::get('/product/{id}', 'show');
+        Route::get('/product/delete/{id}', 'delete');
+        Route::post('/create-product', 'product');
+        Route::post('/update-product', 'product');
+        Route::get('/search-products/{text}', 'search');
+    });
+
 });
 
 

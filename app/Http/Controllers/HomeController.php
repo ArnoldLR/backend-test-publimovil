@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -22,18 +23,26 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
+    {   
         return view('home');
     }
 
     public function users()
     {
-        return view('users.index');
+        $user = Auth::user();
+
+        $token = $user->createToken("API TOKEN")->plainTextToken;
+
+        return view('users.index', compact('token'));
     }
 
     public function products()
     {
-        return view('products.index');
+        $user = Auth::user();
+
+        $token = $user->createToken("API TOKEN")->plainTextToken;
+
+        return view('products.index', compact('token'));
     }
 
     //end controller
