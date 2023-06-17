@@ -1,0 +1,560 @@
+{
+	"info": {
+		"_postman_id": "3c52657d-265c-47b9-a5af-dd852fd628c9",
+		"name": "Backend Test API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25545981"
+	},
+	"item": [
+		{
+			"name": "Api Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/auth/register?name=Arnold Lainez&email=admin@admin.com&password=admin123&username=admin123&telefono=90909090&fecha_nacimiento=2020-10-10",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Arnold Lainez"
+						},
+						{
+							"key": "email",
+							"value": "admin@admin.com"
+						},
+						{
+							"key": "password",
+							"value": "admin123"
+						},
+						{
+							"key": "username",
+							"value": "admin123"
+						},
+						{
+							"key": "telefono",
+							"value": "90909090"
+						},
+						{
+							"key": "fecha_nacimiento",
+							"value": "2020-10-10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "5|otPpmktbhEChFsQ5kbMihBN1b7fhjm5HOaR4XFXb",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/auth/login?email=test@email.com&password=password",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "test@email.com"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api get users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|kgu1mg7z9TQVeot7GneFfhIll2F7H24tlsmYcVks",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/users",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api get single user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|kgu1mg7z9TQVeot7GneFfhIll2F7H24tlsmYcVks",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/user/2",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api create new user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|kgu1mg7z9TQVeot7GneFfhIll2F7H24tlsmYcVks",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/create-user?name=Test user&username=test123&email=test@email.com&telefono=12345678&fecha_nacimiento=2010-10-10&password=password",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"create-user"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Test user"
+						},
+						{
+							"key": "username",
+							"value": "test123"
+						},
+						{
+							"key": "email",
+							"value": "test@email.com"
+						},
+						{
+							"key": "telefono",
+							"value": "12345678"
+						},
+						{
+							"key": "fecha_nacimiento",
+							"value": "2010-10-10"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api update user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|kgu1mg7z9TQVeot7GneFfhIll2F7H24tlsmYcVks",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/create-user?name=Test user&username=test1234&email=test@email.com&telefono=12345678&fecha_nacimiento=2010-10-10&password=password&id=157",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"create-user"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Test user"
+						},
+						{
+							"key": "username",
+							"value": "test1234"
+						},
+						{
+							"key": "email",
+							"value": "test@email.com"
+						},
+						{
+							"key": "telefono",
+							"value": "12345678"
+						},
+						{
+							"key": "fecha_nacimiento",
+							"value": "2010-10-10"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						},
+						{
+							"key": "id",
+							"value": "157"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api delete user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|kgu1mg7z9TQVeot7GneFfhIll2F7H24tlsmYcVks",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/user/delete/151",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"user",
+						"delete",
+						"151"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api get products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|kgu1mg7z9TQVeot7GneFfhIll2F7H24tlsmYcVks",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/products",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api get single product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|kgu1mg7z9TQVeot7GneFfhIll2F7H24tlsmYcVks",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/product/2",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"product",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api delete product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|kgu1mg7z9TQVeot7GneFfhIll2F7H24tlsmYcVks",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/product/delete/4",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"product",
+						"delete",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api create new product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|kgu1mg7z9TQVeot7GneFfhIll2F7H24tlsmYcVks",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/create-product?nombre=Puevo producto&sku=NEW123&cantidad=20&precio=10.25&descripcion=example&img_url=https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3%26ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8fDA%3D%26w=1000%26q=80",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"create-product"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Puevo producto"
+						},
+						{
+							"key": "sku",
+							"value": "NEW123"
+						},
+						{
+							"key": "cantidad",
+							"value": "20"
+						},
+						{
+							"key": "precio",
+							"value": "10.25"
+						},
+						{
+							"key": "descripcion",
+							"value": "example"
+						},
+						{
+							"key": "img_url",
+							"value": "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api update product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|kgu1mg7z9TQVeot7GneFfhIll2F7H24tlsmYcVks",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/create-product?nombre=Puevo producto&sku=NEW123&cantidad=25&precio=10.25&descripcion=example&img_url=https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3%26ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8fDA%3D%26w=1000%26q=80&id=152",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"create-product"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Puevo producto"
+						},
+						{
+							"key": "sku",
+							"value": "NEW123"
+						},
+						{
+							"key": "cantidad",
+							"value": "25"
+						},
+						{
+							"key": "precio",
+							"value": "10.25"
+						},
+						{
+							"key": "descripcion",
+							"value": "example"
+						},
+						{
+							"key": "img_url",
+							"value": "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3%26ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8fDA%3D%26w=1000%26q=80"
+						},
+						{
+							"key": "id",
+							"value": "152"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api search products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|kgu1mg7z9TQVeot7GneFfhIll2F7H24tlsmYcVks",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.arnoldlainez.online/api/search-products/example",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arnoldlainez",
+						"online"
+					],
+					"path": [
+						"api",
+						"search-products",
+						"example"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
